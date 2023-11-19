@@ -21,6 +21,13 @@ vaitrace prints an ASCII table as shown in the following figure
    :width: 1600px
    :alt: vaitrace --txt block diagram
 
+If you set XLNX_ENABLE_DEBUG_MODE=1 vaitrace could get the info of every super layer
+
+The command is:
+
+  .. code-block:: bash
+
+    # python %cd%\..\bin\vaitrace\vaitrace.py -t [timeout] --txt --fine_grained  your-test-command.
 
 * **DPU SubGraph**: Name of subgraph in the xmodel
 * **WL**: Computation workload (MAC indicates two operations, only available for conv subgraphs now)
@@ -30,16 +37,21 @@ vaitrace prints an ASCII table as shown in the following figure
 * **LdWB**: External memory load size of bias and weight
 * **LdFM**: External memory load size of feature map
 * **StFM**: External memory store size of feature map
+* **TOTAL_SW_RT**: sum of all super layers SW_RT
+* **SUPER_LAYER_COUT**: all super layers of xmodel
 
-**vaitrace shows in executable**
+**vaitrace shows in csv format**
 
-If you want to show result by csv or excel, you should run above command with "--csv" and you could get vaitrace-platforname-modelname.csv files.
+If you want to show result by csv or excel, you should run above command with "--csv" and you could get 
+vaitrace-platforname-modelname.csv file in current path.
 
 * If using the command line, run 
   
   .. code-block:: bash
 
-   # vitis_analyzer xrt.run_summary.
+   # python %cd%\..\bin\vaitrace\vaitrace.py -t [timeout] --csv --fine_grained  your-test-command.
+
+vaitrace output an csv file name: vaitrace-paltfom-modelname.csv 
 
 **vaitrace Usage**
 
